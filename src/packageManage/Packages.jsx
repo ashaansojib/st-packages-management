@@ -42,6 +42,7 @@ const Packages = () => {
                                         }
                                     </tbody>
                                 </table>
+                                <p className='text-center px-4 py-2 w-[180px] mx-auto bg-[#FF014F] rounded-md'>Total Packages: {packages.length}</p>
                             </div>
                         )
                     }

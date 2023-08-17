@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
 import Home from "../home/Home";
+import Payments from "../pages/payment/Payments";
+import Replace from "../pages/return/Replace";
 
 const router = createBrowserRouter([
     {
@@ -10,6 +12,14 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />
+            },
+            {
+                path: '/payments',
+                element: <Payments />
+            },
+            {
+                path: '/replace',
+                element: <Replace />
             }
         ]
     }
