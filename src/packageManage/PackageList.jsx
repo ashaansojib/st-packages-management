@@ -6,8 +6,8 @@ const PackageList = ({item}) => {
         <tr className='border-gray-400'>
             <th>{brand}</th>
             <td>{model}</td>
-            <td>{price} TK</td>
-            <td>{quantity} Pis</td>
+            <td>{price}</td>
+            <td>{quantity}</td>
             <td>{date}</td>
         </tr>
     );
