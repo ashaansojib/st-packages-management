@@ -1,0 +1,42 @@
+[
+    {
+      "_id": "64de7866fe7bc582bd800277",
+      "model": "a5s",
+      "price": 1120,
+      "quantity": 1,
+      "brand": "Oppo",
+      "date": "18/08/23, 1:43AM"
+    },
+    {
+      "_id": "64de7866c5e0a3823ff9fdbc",
+      "model": "a5s",
+      "price": 1120,
+      "quantity": 1,
+      "brand": "Oppo",
+      "date": "18/08/23, 1:43AM"
+    },
+    {
+      "_id": "64de7866682761d643304572",
+      "model": "a5s",
+      "price": 1120,
+      "quantity": 1,
+      "brand": "Oppo",
+      "date": "18/08/23, 1:43AM"
+    },
+    {
+      "_id": "64de78666611dd87b7207462",
+      "model": "a5s",
+      "price": 1120,
+      "quantity": 1,
+      "brand": "Oppo",
+      "date": "18/08/23, 1:43AM"
+    },
+    {
+      "_id": "64de7866b42d5914413bc308",
+      "model": "a5s",
+      "price": 1120,
+      "quantity": 1,
+      "brand": "Oppo",
+      "date": "18/08/23, 1:43AM"
+    }
+  ]
