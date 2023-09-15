@@ -19,7 +19,7 @@ const Packages = () => {
             <h2 className='font-medium text-slate-100 pb-2'>All Packages List :</h2>
             {
                 loading ? (<ScaleLoader className='h-[200px] w-20 mx-auto' color="#e01616" />) : (
-                    <div className="">
+                    <div className="overflow-x-auto">
                         <table className="table">
                             <thead>
                                 <tr className='text-white bg-[#070A2D]'>
