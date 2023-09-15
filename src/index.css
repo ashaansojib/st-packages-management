@@ -9,6 +9,3 @@ body{
 .my-container{
     @apply max-w-screen-sm mx-auto
 }
-.table :where(th, td){
-    padding-right: 0;
-}

@@ -72,7 +72,7 @@ const Packages = () => {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <div className="fixed inset-0 bg-black bg-opacity-25" />
+                        <div className="fixed inset-0" />
                     </Transition.Child>
 
                     <div className="fixed inset-0 overflow-y-auto">
@@ -93,11 +93,11 @@ const Packages = () => {
                                     >
                                         Product Details
                                     </Dialog.Title>
-                                    <div className="mt-2 grid grid-cols-2 gap-4">
-                                    <input type="text" placeholder="Name" className="input input-bordered w-full" />
-                                    <input type="text" placeholder="Model" className="input input-bordered w-full" />
-                                    <input type="text" placeholder="Price" className="input input-bordered w-full" />
-                                    <input type="text" placeholder="Quantity" className="input input-bordered w-full" />
+                                    <div className="mt-2 grid grid-cols-2 gap-4 text-black">
+                                        <input type="text" placeholder="Name" className="input input-bordered w-full" />
+                                        <input type="text" placeholder="Model" className="input input-bordered w-full" />
+                                        <input type="text" placeholder="Price" className="input input-bordered w-full" />
+                                        <input type="text" placeholder="Quantity" className="input input-bordered w-full" />
                                     </div>
 
                                     <div className="mt-4">
