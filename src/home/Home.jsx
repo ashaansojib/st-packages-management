@@ -3,9 +3,9 @@ import Packages from '../packageManage/Packages';
 
 const Home = () => {
     return (
-        <div>
+        <>
             <Packages />
-        </div>
+        </>
     );
 };
 
