@@ -2,11 +2,19 @@ import React, { Fragment, useEffect, useState } from 'react';
 import PackageList from './PackageList';
 import { ScaleLoader } from 'react-spinners';
 import { Dialog, Transition } from '@headlessui/react';
+import { useForm } from 'react-hook-form';
+import { useSetPackageMutation } from '../redux/features/api/baseApi';
 
 const Packages = () => {
     const [packages, setPackages] = useState([]);
     const [loading, setLoading] = useState(true);
     const [isOpen, setIsOpen] = useState(false);
+
+    const [setPackage, { data: findPackage }] = useSetPackageMutation();
+    console.log(findPackage)
+
+    const { register, handleSubmit, reset, watch, formState: { errors }, } = useForm();
+
     function closeModal() {
         setIsOpen(false)
     }
@@ -14,10 +22,14 @@ const Packages = () => {
     function openModal() {
         setIsOpen(true)
     }
-    const handleAdd = (data) => {
-        console.log(data)
-        closeModal()
+    const onSubmit = (data) => {
+        setPackage(data)
+
+        closeModal();
+        reset();
     }
+
+
     useEffect(() => {
         fetch('/PackageList.json')
             .then(res => res.json())
@@ -27,7 +39,7 @@ const Packages = () => {
             })
     }, []);
     return (
-        <div className="my-container">
+        <div className="my-container py-3">
             <h2 className='font-medium text-slate-100 pb-2'>All Packages List :</h2>
             {
                 loading ? (<ScaleLoader className='h-[200px] w-20 mx-auto' color="#e01616" />) : (
@@ -93,21 +105,21 @@ const Packages = () => {
                                     >
                                         Product Details
                                     </Dialog.Title>
-                                    <div className="mt-2 grid grid-cols-2 gap-4 text-black">
-                                        <input type="text" placeholder="Name" className="input input-bordered w-full" />
-                                        <input type="text" placeholder="Model" className="input input-bordered w-full" />
-                                        <input type="text" placeholder="Price" className="input input-bordered w-full" />
-                                        <input type="text" placeholder="Quantity" className="input input-bordered w-full" />
-                                    </div>
+                                    <form onSubmit={handleSubmit(onSubmit)}>
+                                        <div className="mt-2 grid grid-cols-2 gap-4 text-black">
+                                            <input type="text" {...register("name")} placeholder="Name" className="input input-bordered w-full" />
+                                            <input type="text" {...register("model", { required: true })} placeholder="Model" className="input input-bordered w-full" />
+                                            <input type="text" {...register("price")} placeholder="Price" className="input input-bordered w-full" />
+                                            <input type="text" {...register("quantity", { required: true })} placeholder="Quantity" className="input input-bordered w-full" />
+                                        </div>
 
-                                    <div className="mt-4">
-                                        <button
-                                            type="button"
-                                            className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                                            onClick={() => handleAdd("sojib")}
-                                        >Done
-                                        </button>
-                                    </div>
+
+                                        <div className="mt-4">
+                                            <input
+                                                type="submit"
+                                                className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" />
+                                        </div>
+                                    </form>
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>

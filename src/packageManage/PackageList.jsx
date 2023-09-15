@@ -10,10 +10,10 @@ const PackageList = ({ item }) => {
             <td>{quantity}</td>
             <td>{date}</td>
             <td>
-                <button className='p-1 border rounded-full'>X</button>
+                <button className='p-1 border-gray-500 border'>X</button>
             </td>
             <td>
-            <button className='p-1 border rounded-full'>Pay</button>
+            <button className='p-1 border border-gray-500'>Pay</button>
             </td>
         </tr>
     );
