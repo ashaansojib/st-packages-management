@@ -5,18 +5,28 @@ const baseApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:9988'
     }),
+    tagTypes: ['packages'],
     endpoints: (builder) => ({
         getPackages: builder.query({
-            query: '/packages'
+            query: () => '/packages',
+            providesTags: ["packages"]
         }),
         setPackage: builder.mutation({
-            query: (post) =>({
+            query: (data) => ({
                 url: '/packages',
                 method: 'POST',
-                body: post,
+                body: data,
             }),
+            invalidatesTags: ["packages"]
+        }),
+        removeCombo: builder.mutation({
+            query: (id) => ({
+                url: `/delete-combo/${id}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: ["packages"]
         }),
     }),
 });
-export const { useGetPackagesQuery, useSetPackageMutation } = baseApi;
+export const { useGetPackagesQuery, useSetPackageMutation, useRemoveComboMutation } = baseApi;
 export default baseApi;
