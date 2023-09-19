@@ -1,23 +1,25 @@
 import { Dialog, Transition } from '@headlessui/react';
 import React, { Fragment, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useSetPackageMutation } from '../redux/features/api/baseApi';
+import { useGetPackagesQuery, useSetPackageMutation } from '../redux/features/api/baseApi';
 import moment from 'moment';
 
 const Modal = () => {
-    const [isOpen, setIsOpen] = useState(false);
-
     const { register, handleSubmit, reset, watch, formState: { errors }, } = useForm();
+    const { data: packages, isLoading } = useGetPackagesQuery();
+
+    const [isOpen, setIsOpen] = useState(false);
     const [setPackages] = useSetPackageMutation();
 
     const onSubmit = (data) => {
-        data.quantity = parseInt(data.quantity);
         //collect date
         const time = moment().format('h:mmA');
         const date = moment().format('DD/MM/YY');
         data.time = time;
         data.date = date;
+
         setPackages(data)
+
         closeModal();
         reset();
     }
@@ -34,7 +36,7 @@ const Modal = () => {
             {/* modal area */}
             < div className='my-container flex justify-end gap-2 items-center p-4' >
                 <button onClick={openModal} className='text-center px-4 py-2 bg-[#353333] text-white rounded-md'>Add Package</button>
-                <button className='text-center px-4 py-2 bg-[#FF014F] rounded-md'>Total: 5</button>
+                <button className='text-center px-4 py-2 bg-[#FF014F] rounded-md'>Total: {packages ? packages.length : 0}</button>
             </div >
             < Transition appear show={isOpen} as={Fragment}>
                 <Dialog as="div" className="relative z-10" onClose={closeModal}>

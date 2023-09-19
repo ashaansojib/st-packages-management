@@ -5,7 +5,6 @@ import { useGetPackagesQuery } from '../redux/features/api/baseApi';
 
 const Packages = () => {
     const { data: packages, isLoading } = useGetPackagesQuery();
-    console.log(packages)
     return (
         <div className="my-container py-3">
             <h2 className='font-medium text-slate-100 pb-2'>All Packages List :</h2>

@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 const baseApi = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:9988'
+        baseUrl: 'https://st-server-6izx09ybm-ashaansojib.vercel.app'
     }),
     tagTypes: ['packages'],
     endpoints: (builder) => ({
@@ -26,7 +26,19 @@ const baseApi = createApi({
             }),
             invalidatesTags: ["packages"]
         }),
+        payments: builder.mutation({
+            query: (pay) => ({
+                url: '/payment',
+                method: 'POST',
+                body: pay,
+            }),
+            invalidatesTags: ["packages"]
+        }),
+        getPaymentItem: builder.query({
+            query: () => '/payment',
+            providesTags: ["packages"]
+        })
     }),
 });
-export const { useGetPackagesQuery, useSetPackageMutation, useRemoveComboMutation } = baseApi;
+export const { useGetPackagesQuery, useSetPackageMutation, useRemoveComboMutation, usePaymentsMutation, useGetPaymentItemQuery } = baseApi;
 export default baseApi;

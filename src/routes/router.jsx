@@ -14,10 +14,6 @@ const router = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: '/payments',
-                element: <Payments />
-            },
-            {
                 path: '/replace',
                 element: <Replace />
             }
